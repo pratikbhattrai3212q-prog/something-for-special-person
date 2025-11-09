@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Page 🔒</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    transition: background 1.5s ease;
+  }
+
+  /* initial dark background */
+  .container-wrapper {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 1.5s ease;
+  }
+
+  .container {
+    text-align: center;
+    color: #fff;
+  }
+
+  h1 {
+    font-size: 2.2em;
+    letter-spacing: 1px;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  p {
+    opacity: 0.7;
+    margin-top: 8px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .lock {
+    font-size: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.3s;
+  }
+
+  .lock:hover {
+    transform: scale(1.1);
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .secret {
+    margin-top: 30px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s ease;
+  }
+
+  #unlock:checked ~ .container-wrapper .secret {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .secret h2 {
+    font-size: 2em;
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    animation: glow 1.5s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #ff416c; }
+    to { text-shadow: 0 0 25px #ff4b2b; }
+  }
+
+  .hearts span {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    background: #ff4b2b;
+    transform: rotate(45deg);
+    animation: float 8s infinite ease-in;
+    opacity: 0.7;
+  }
+
+  .hearts span::before,
+  .hearts span::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff4b2b;
+    border-radius: 50%;
+  }
+
+  .hearts span::before { top: -10px; left: 0; }
+  .hearts span::after { left: -10px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+  }
+
+  /* Surprise button styling */
+  .surprise-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    border: none;
+    padding: 12px 22px;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+  }
+
+  .surprise-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 65, 108, 0.6);
+  }
+
+  .hidden-message {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.8s ease;
+    margin-top: 12px;
+  }
+
+  /* Reveal hidden message */
+  #surprise-toggle:checked ~ .hidden-message {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  /* Change background when surprise opened */
+  #surprise-toggle:checked ~ .container-wrapper {
+    background: radial-gradient(circle at center, #ff9a9e, #fad0c4, #ffe5e0);
+  }
+
+</style>
+</head>
+<body>
+  <input type="checkbox" id="unlock">
+  <div class="container-wrapper">
+    <div class="container">
+      <h1>You've Discovered a Secret Page 🔮</h1>
+      <p>Only someone special can unlock what’s hidden here...</p>
+
+      <label for="unlock">
+        <div class="lock">🔓</div>
+      </label>
+
+      <div class="secret">
+        <h2>Hey...Dikshya Wanna tell you something 💖</h2>
+        <input type="checkbox" id="surprise-toggle" />
+        <label for="surprise-toggle" class="surprise-btn">something special 🎁</label>
+        <div class="hidden-message">
+          <p>Out of all the stars I’ve seen, you shine the brightest.<br>
+          You’re not just someone special — you’re my favorite feeling I can’t explain.<br>
+Among all the stars, I always find my eyes searching for you<br>
+So,can you be mine for rest of my life.🌙✨</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hearts">
+    <span style="left:10%; animation-delay:0s"></span>
+    <span style="left:30%; animation-delay:2s"></span>
+    <span style="left:60%; animation-delay:4s"></span>
+    <span style="left:80%; animation-delay:1s"></span>
+  </div>
+</body>
+</html>
